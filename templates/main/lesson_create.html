@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+    <def>
+        {{ form.name }}
+    </def>
+    <def>
+        {{ form.subject }}
+    </def>
+    <def>
+        {{ form.content }}
+    </def>
+    <def>
+        {{ form.content_file }}
+    </def>
+    <def>
+        {{ form.content_audio }}
+    </def>
+    <button type="submit">Сохранить урок</button><br>
+        <span> {{error}}</span>
+    </form>
+{% endblock %}
