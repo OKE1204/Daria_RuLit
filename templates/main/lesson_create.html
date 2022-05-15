@@ -5,23 +5,23 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <def>
+    <dev>
         {{ form.name }}
-    </def>
-    <def>
+    </dev>
+    <dev>
         {{ form.subject }}
-    </def>
-    <def>
+    </dev>
+    <dev>
         {{ form.content }}
-    </def>
-    <def>
-        {{ form.content_file }}
-    </def>
-    <def>
-        {{ form.content_audio }}
-    </def>
+    </dev>
+    <dev>
+        <input type = "file" name = "content_file" multiple>
+    </dev>
+    <dev>
+        <input type = "file" name = "content_audio" multiple>
+    </dev>
     <button type="submit">Сохранить урок</button><br>
         <span> {{error}}</span>
     </form>
