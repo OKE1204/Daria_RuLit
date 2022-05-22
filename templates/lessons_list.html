@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ title }}
+    {{ title }}
 {% endblock %}
-
 {% block content %}
-    <def>
-        <p>Список уроков по {{ title }}</p>
-        <p>{{ lessons }}</p>
-        <li><a href="http://127.0.0.1:8000/create">Создать урок</a></li>
-    </def>
+    <p><li><a href="http://127.0.0.1:8000/create?subject={{ title }}">Создать урок</a></li></p>
+    <p>Список уроков по {{ title }}</p>
+    {% for n in lessons %}
+        <p><a href="http://127.0.0.1:8000/lessons/page/{{ n.id }}">{{ n.name }}</a></p>
+        <p>{{ n.content }}</p>
+        <p>_______________________</p></br>
+    {% endfor %}
+
 {% endblock %}

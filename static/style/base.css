@@ -16,6 +16,15 @@ p {
 }
 
 
+a {
+    color: #111111; /* цвет текста параграфов */
+    font-family: 'Constantia', sans-serif; /* гарнитура шрифта параграфов */
+    font-size: 100%; /* размер шрифта */
+    text-align: center; /* текст по центру */
+    /*border: 5px green double; /* стили рамки */
+}
+
+
 .img {
     max-width: 100px;
 
@@ -43,21 +52,24 @@ footer {
 
 .img {
     height: 100px;
-       width: 100px;
+    width: 100px;
 }
 
-<!--
-Навигация
+/*<!--Навигация-->*/
 
--->
+
+header {
+    float: top;
+    text-align: center;
+    background: blue;
+}
 
 
 .menu-main {
     list-style: none;
     margin-left: auto;
     margin-right: auto;
-    padding: 125px 0 5px;
-    text-align: center;
+    padding: 25px 0 5px;
     background: white;
 }
 
@@ -136,3 +148,9 @@ footer {
         margin: 0 30px;
     }
 }
+
+
+.leftimg {
+    float:left; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+   }

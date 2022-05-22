@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ lesson.name }}</title>
 </head>
 <body>
-
+    {{ lesson.name }} </br>
+    {{ lesson.content }} </br>
+    {{ lesson.content_audio }} </br>
+    {% for n in lesson.content_file.all %}
+        <a href="/media/{{ n.file }}"> Скаячать файо</a>
+    {% endfor %}
 </body>
 </html>
