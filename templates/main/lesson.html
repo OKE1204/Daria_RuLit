@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ lesson.name }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <body>
     {{ lesson.name }} </br>
     {{ lesson.content }} </br>
     {{ lesson.content_audio }} </br>
     {% for n in lesson.content_file.all %}
+        <figure>
+            <figcaption> jkgjhk </figcaption>
+            <audio controls="controls" preload="auto" >
+                <source src="/media/{{ n.file }}">
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+        </figure>
         <a href="/media/{{ n.file }}"> Скаячать файо</a>
     {% endfor %}
-</body>
-</html>
+    </body>
+{% endblock %}

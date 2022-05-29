@@ -19,6 +19,9 @@ class Lesson(models.Model):
     content_audio = models.ManyToManyField('MediaContent', related_name="content_audio", verbose_name="Аудио урока")
     subject = models.CharField(max_length=50, choices=SUBJECTS)
 
+    def get_absolut_url(self):
+        return f'lessons/{self.id}'
+
 
 class MediaContent(models.Model):
     title = models.CharField(max_length=50)

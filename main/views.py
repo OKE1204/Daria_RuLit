@@ -2,6 +2,7 @@ from typing import Dict, Union
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from main.models import Lesson, MediaContent
 from .forms import LessonForm
+from django.views.generic import UpdateView
 
 
 def home(request):
@@ -34,7 +35,6 @@ def lesson_create(request):
     if request.method == 'POST':
         form = LessonForm(request.POST)
         if form.is_valid():
-
             content_file = []
             content_audio = []
             for a in request.FILES.getlist('content_file'):
@@ -48,10 +48,10 @@ def lesson_create(request):
             lesson.save()
             lesson.content_file.add(*content_file)
             lesson.content_audio.add(*content_audio)
+
             return redirect('home')
         else:
             error = 'Форма заполнена не верно!'
-
     form = LessonForm()
 
     context = {
@@ -60,3 +60,25 @@ def lesson_create(request):
     }
 
     return render(request, 'main/lesson_create.html', context)
+
+
+def lesson_update(request, lesson_id):
+    # if Lesson.author != request.user:
+    #     return redirect("home")
+    lesson = get_object_or_404(Lesson, pk=lesson_id)
+    form = LessonForm(request.POST or None,
+                      files=request.FILES or None,
+                      instance=lesson
+                      )
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('lesson', lesson_id)
+        return render(request, 'main/lesson_update.html',
+                      {'form': form, 'lesson': lesson}
+                      )
+    return render(request, 'main/lesson_update.html',
+                  {'form': form, 'lesson': lesson}
+                  )
+
+
